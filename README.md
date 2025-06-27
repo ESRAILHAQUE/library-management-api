@@ -151,8 +151,11 @@ GET /api/books?filter=FANTASY&sortBy=createdAt&sort=desc&limit=5
 
 ### Live Link
 
-* 🎥 [Video Walkthrough](#)
-* 🌐 [Live Demo](#) *(Vercel / Render / Railway link if hosted)*
+
+
+- ✅ [Live Demo](https://library-management-api-sooty-chi.vercel.app/)
+
+
 
 ---
 

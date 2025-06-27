@@ -29,7 +29,10 @@ export const borrowBook = async (
       return;
     }
 
-    if (book.copies < quantity) {
+    // Use the instance method that handles deduction + availability update
+    try {
+      await book.borrowCopies(quantity);
+    } catch (error) {
       res.status(400).json({
         success: false,
         message: "Not enough copies available",
@@ -37,9 +40,6 @@ export const borrowBook = async (
       });
       return;
     }
-
-    book.copies -= quantity;
-    await book.updateAvailability();
 
     const borrow = await Borrow.create({ book: bookId, quantity, dueDate });
 

@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from "express";
 import dotenv from "dotenv";
 import bookRoutes from "./routes/book.route";
 import borrowRoutes from "./routes/borrow.route";
+import { globalErrorHandler } from "./middlewares/errorHandler";
 dotenv.config();
 
 const app:Application = express();
@@ -27,5 +28,8 @@ app.get("/", (req:Request, res:Response) => {
     },
   });
 });
+
+// Global Error Handler (must come after routes)
+app.use(globalErrorHandler);
 
 export default app;

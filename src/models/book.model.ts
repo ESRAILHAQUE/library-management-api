@@ -23,17 +23,21 @@ const bookSchema = new Schema<IBookDocument>(
     },
     isbn: { type: String, required: true, unique: true },
     description: { type: String, default: "" },
-    copies: { type: Number, required: true, min: 1 },
+    copies: {
+      type: Number,
+      required: true,
+      min: [0, "Copies must be a positive number"],
+    },
+
     available: { type: Boolean, default: true },
-
   },
-  { timestamps: true,versionKey: false } 
-
+  { timestamps: true, versionKey: false }
 );
 
-bookSchema.methods.updateAvailability = async function (): Promise<IBookDocument> {
-  this.available = this.copies > 0;
-  return this.save();
-};
+bookSchema.methods.updateAvailability =
+  async function (): Promise<IBookDocument> {
+    this.available = this.copies > 0;
+    return this.save();
+  };
 
-export const  Book = mongoose.model<IBookDocument>("Book", bookSchema);
+export const Book = mongoose.model<IBookDocument>("Book", bookSchema);

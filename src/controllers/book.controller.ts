@@ -1,19 +1,23 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { Book } from "../models/book.model";
 
-export const createBook = async (req: Request, res: Response) => {
+
+
+export const createBook = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const book = await Book.create(req.body);
+
     res.status(201).json({
       success: true,
       message: "Book created successfully",
       data: book,
     });
   } catch (error) {
-    res.status(500).json({
-      message: "Error creating book",
-      error: error instanceof Error ? error.message : "Unknown error",
-    });
+    next(error);
   }
 };
 

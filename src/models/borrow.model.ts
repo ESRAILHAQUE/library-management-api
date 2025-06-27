@@ -5,7 +5,7 @@ import { IBorrow } from "../interfaces/borrow.interface";
 export interface IBorrowDocument  extends IBorrow ,Document{}
 const borrowSchema = new Schema<IBorrowDocument>({
     book: {
-        type: Schema.Types.ObjectId, ref: 'Book',required: true,
+        type: Schema.Types.ObjectId, ref: "Book",required: true,
     },
     quantity: {
         type: Number,

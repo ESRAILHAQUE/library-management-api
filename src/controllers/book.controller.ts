@@ -70,7 +70,7 @@ export const getBookById = async (req: Request, res: Response):Promise<void> => 
             error: error instanceof Error ? error.message : "Unknown error",
         });
     }   
-}
+};
 
 export const updateBook=async (req: Request, res: Response):Promise<void> => {
     try {
@@ -98,7 +98,7 @@ export const updateBook=async (req: Request, res: Response):Promise<void> => {
             error: error instanceof Error ? error.message : "Unknown error",
         });
     }
-}
+};
 
 export const deleteBook =async (req: Request, res: Response):Promise<void> => {
     try {
@@ -122,4 +122,4 @@ export const deleteBook =async (req: Request, res: Response):Promise<void> => {
             error: error instanceof Error ? error.message : "Unknown error",
         });
     }
-}
+};
